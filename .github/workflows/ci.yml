@@ -42,9 +42,10 @@ jobs:
       - name: Analyze and test
         run: ./gradlew build -x checkstyleMain -x checkstyleTest
 
-      # Pull requests from forks get no write access to code scanning.
+      # Pull requests from forks get no write access to code scanning, and
+      # private repositories have none without GitHub Advanced Security.
       - name: Upload the SpotBugs report
-        if: always() && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
+        if: always() && !github.event.repository.private && (github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository)
         uses: github/codeql-action/upload-sarif@24c54180a607b1449ed407dd24f251e4e9147c8d # v4.38.3
         with:
           sarif_file: api/build/reports/spotbugs/main.sarif
