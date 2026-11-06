@@ -4,15 +4,15 @@
  */
 buildscript {
   dependencies {
-    classpath(platform("tools.jackson:jackson-bom:3.2.3"))
+    classpath(platform("tools.jackson:jackson-bom:3.2.4"))
   }
 }
 
 plugins {
   id("java")
   id("checkstyle")
-  id("org.springframework.boot") version "4.1.1"
-  id("io.freefair.lombok") version "9.8.0"
+  id("org.springframework.boot") version "4.1.2"
+  id("io.freefair.lombok") version "9.8.2"
   id("com.github.spotbugs") version "6.5.13"
 }
 
@@ -41,10 +41,10 @@ dependencies {
   implementation("org.json:json:20260814")
 
   implementation("org.postgresql:postgresql:42.7.14")
-  implementation("org.hibernate.orm:hibernate-core:7.4.12.Final")
+  implementation("org.hibernate.orm:hibernate-core:7.4.14.Final")
 
-  implementation("org.springframework.boot:spring-boot-starter-web:4.1.1")
-  implementation("org.springframework.boot:spring-boot-starter-data-jpa:4.1.1")
+  implementation("org.springframework.boot:spring-boot-starter-web:4.1.2")
+  implementation("org.springframework.boot:spring-boot-starter-data-jpa:4.1.2")
 
   spotbugsPlugins("com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0")
 
@@ -54,7 +54,7 @@ dependencies {
    * platform lifts every Jackson module to the same fixed patch release;
    * drop it once Spring Boot brings 3.1.7 or later on its own.
    */
-  implementation(platform("tools.jackson:jackson-bom:3.2.3"))
+  implementation(platform("tools.jackson:jackson-bom:3.2.4"))
 
   constraints {
     /*
